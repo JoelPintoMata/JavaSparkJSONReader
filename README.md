@@ -9,3 +9,7 @@ mvn spring-boot:run
 ```
 mvn test
 ```
+
+#### Coverage
+
+Current test coverage of 100%
