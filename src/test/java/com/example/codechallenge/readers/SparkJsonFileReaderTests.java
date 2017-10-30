@@ -1,6 +1,6 @@
-package com.example.codeChallenge.readers;
+package com.example.codechallenge.readers;
 
-import com.example.codeChallenge.enums.SocialTypeEnum;
+import com.example.codechallenge.enums.SocialTypeEnum;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,7 +20,7 @@ public class SparkJsonFileReaderTests {
 
 	@Autowired
     @Qualifier("sparkJsonFileReader")
-    SparkReader sparkReader;
+    private SparkReader sparkReader;
 
     /**
      * Tests that all records are read correctly from the source

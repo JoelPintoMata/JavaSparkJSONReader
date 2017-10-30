@@ -1,7 +1,7 @@
-package com.example.codeChallenge.controllers;
+package com.example.codechallenge.controllers;
 
 
-import com.example.codeChallenge.readers.SparkReader;
+import com.example.codechallenge.readers.SparkReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -13,8 +13,8 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.util.List;
 
-import static com.example.codeChallenge.enums.SocialTypeEnum.FACEBOOK;
-import static com.example.codeChallenge.enums.SocialTypeEnum.VIDEO;
+import static com.example.codechallenge.enums.SocialTypeEnum.FACEBOOK;
+import static com.example.codechallenge.enums.SocialTypeEnum.VIDEO;
 
 /**
  * Main application controller

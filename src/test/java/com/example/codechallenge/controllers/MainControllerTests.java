@@ -1,14 +1,12 @@
-package com.example.codeChallenge.controllers;
+package com.example.codechallenge.controllers;
 
-import com.example.codeChallenge.Main;
-import com.example.codeChallenge.readers.SparkJsonFileReader;
+import com.example.codechallenge.Main;
 import org.apache.http.entity.ContentType;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,9 +21,6 @@ public class MainControllerTests {
 
     @Autowired
     private TestRestTemplate restTemplate;
-
-    @MockBean
-    private SparkJsonFileReader sparkJsonFileReader;
 
     /**
      * Tests all application controllers

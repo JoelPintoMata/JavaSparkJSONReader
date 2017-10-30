@@ -1,4 +1,4 @@
-package com.example.codeChallenge.enums;
+package com.example.codechallenge.enums;
 
 /**
  * A enumerator of the available social types
