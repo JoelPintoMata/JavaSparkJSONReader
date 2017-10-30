@@ -4,7 +4,6 @@ import com.example.codeChallenge.Main;
 import com.example.codeChallenge.readers.SparkJsonFileReader;
 import org.apache.http.entity.ContentType;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +14,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.mockito.BDDMockito.given;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Main.class,
@@ -32,18 +26,6 @@ public class MainControllerTests {
 
     @MockBean
     private SparkJsonFileReader sparkJsonFileReader;
-
-    private List<String> stringList;
-
-    @Before
-    public void setup() {
-        stringList = new ArrayList<>();
-        stringList.add("{\"socialType\":\"INSTAGRAM_PICTURE\",\"socialId\":\"1453799147568385409_1428837659\",\"timestamp\":\"2017-02-19 17:46:25\",\"username\":\"officialasroma\",\"userId\":\"1428837659\",\"content\":\"#DajeRoma \uD83D\uDD36\uD83D\uDD34\\n***\\nFollow @officialasroma on Instagram\\n***\\n#ASRoma #Roma #Dzeko #Salah #momo #edin #bosnia #egypt #asromagoal #celebration #Rome #serieatim #seriea #strootman #preres #nainggolan\",\"latitude\":41.933872,\"longitude\":12.454714}");
-        given(this.sparkJsonFileReader.
-                getAll()
-        ).willReturn(
-                stringList);
-    }
 
     /**
      * Tests all application controllers
