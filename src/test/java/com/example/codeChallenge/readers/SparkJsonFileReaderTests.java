@@ -31,12 +31,16 @@ public class SparkJsonFileReaderTests {
     }
 
     /**
-     * Tests that all records are read correctly from the source
+     * Tests the total number of socials with efteling username
      */
     @Test
     public void getByUsername() {
         Assert.assertEquals(sparkReader.getByUsername("efteling").size(), 40);
     }
+
+    /**
+     * Tests the total number of socials of VIDEO type
+     */
     @Test
     public void getBySocialType() {
         Assert.assertEquals(sparkReader.getBySocialType(SocialTypeEnum.VIDEO).size(), 100);
