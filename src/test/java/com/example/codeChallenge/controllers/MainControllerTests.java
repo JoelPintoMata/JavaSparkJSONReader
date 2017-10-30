@@ -1,22 +1,29 @@
-package com.example.codeChallenge;
+package com.example.codeChallenge.controllers;
 
+import com.example.codeChallenge.CodeChallengeApplication;
+import com.example.codeChallenge.readers.SparkReader;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.ContextHierarchy;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@WebAppConfiguration
+@ContextHierarchy({
+        @ContextConfiguration(classes = CodeChallengeApplication.class)
+})
 @TestPropertySource(locations = "classpath:/application-test.properties")
-public class CodeChallengeApplicationTests {
+public class MainControllerTests {
 
 	@Autowired
     @Qualifier("sparkJsonFileReader")
-	SparkReader sparkReader;
+    SparkReader sparkReader;
 
     @Test
     public void contextLoads() {
