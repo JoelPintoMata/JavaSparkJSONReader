@@ -12,4 +12,4 @@ mvn test
 
 #### Coverage
 
-Current test coverage of 100%
+Current test class coverage of 100%
