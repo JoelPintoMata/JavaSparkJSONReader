@@ -1,6 +1,7 @@
 package com.example.codeChallenge.readers;
 
-import com.example.codeChallenge.SocialTypeEnum;
+
+import com.example.codeChallenge.enums.SocialTypeEnum;
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;

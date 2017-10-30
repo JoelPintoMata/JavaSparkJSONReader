@@ -13,8 +13,8 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.util.List;
 
-import static com.example.codeChallenge.SocialTypeEnum.FACEBOOK;
-import static com.example.codeChallenge.SocialTypeEnum.VIDEO;
+import static com.example.codeChallenge.enums.SocialTypeEnum.FACEBOOK;
+import static com.example.codeChallenge.enums.SocialTypeEnum.VIDEO;
 
 @Controller
 @EnableAutoConfiguration
