@@ -20,7 +20,7 @@ import static com.example.codeChallenge.SocialTypeEnum.VIDEO;
 public class SampleController {
 
     @Autowired
-    @Qualifier("sparkFileReader")
+    @Qualifier("sparkJsonFileReader")
 	public SparkReader sparkReader;
 
     @RequestMapping("/")
