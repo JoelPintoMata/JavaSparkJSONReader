@@ -1,4 +1,6 @@
-package com.example.codeChallenge;
+package com.example.codeChallenge.readers;
+
+import com.example.codeChallenge.SocialTypeEnum;
 
 import java.time.LocalDate;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.example.codeChallenge;
+package com.example.codeChallenge.enums;
 
 public enum SocialTypeEnum {
 

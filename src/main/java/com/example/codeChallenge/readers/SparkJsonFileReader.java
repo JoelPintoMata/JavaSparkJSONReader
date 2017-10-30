@@ -1,5 +1,6 @@
-package com.example.codeChallenge;
+package com.example.codeChallenge.readers;
 
+import com.example.codeChallenge.SocialTypeEnum;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
