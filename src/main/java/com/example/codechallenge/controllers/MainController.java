@@ -25,7 +25,7 @@ public class MainController {
 
     @Autowired
     @Qualifier("sparkJsonFileReader")
-	public SparkReader sparkReader;
+    public SparkReader sparkReader;
 
     @RequestMapping("/")
     @ResponseBody

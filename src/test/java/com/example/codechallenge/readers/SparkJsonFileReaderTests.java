@@ -18,7 +18,7 @@ import java.time.Month;
 @TestPropertySource(locations = "classpath:/application-test.properties")
 public class SparkJsonFileReaderTests {
 
-	@Autowired
+    @Autowired
     @Qualifier("sparkJsonFileReader")
     private SparkReader sparkReader;
 
@@ -27,7 +27,8 @@ public class SparkJsonFileReaderTests {
      */
     @Test
     public void getAll() {
-        Assert.assertEquals(sparkReader.getAll().size(), 898);
+        Assert.assertEquals(sparkReader.getAll().size()
+                , 898);
     }
 
     /**
@@ -35,7 +36,8 @@ public class SparkJsonFileReaderTests {
      */
     @Test
     public void getByUsername() {
-        Assert.assertEquals(sparkReader.getByUsername("efteling").size(), 40);
+        Assert.assertEquals(sparkReader.getByUsername("efteling").size()
+                , 40);
     }
 
     /**
@@ -43,7 +45,8 @@ public class SparkJsonFileReaderTests {
      */
     @Test
     public void getBySocialType() {
-        Assert.assertEquals(sparkReader.getBySocialType(SocialTypeEnum.VIDEO).size(), 100);
+        Assert.assertEquals(sparkReader.getBySocialType(SocialTypeEnum.VIDEO).size()
+                , 100);
     }
 
     /**
@@ -51,7 +54,8 @@ public class SparkJsonFileReaderTests {
      */
     @Test
     public void getByContains() {
-        Assert.assertEquals(sparkReader.getByContains("disney").size(), 17);
+        Assert.assertEquals(sparkReader.getByContains("disney").size()
+                , 17);
     }
 
 
@@ -60,7 +64,8 @@ public class SparkJsonFileReaderTests {
      */
     @Test
     public void getByNotContains() {
-        Assert.assertEquals(sparkReader.getByNotContains("disney").size(), 881);
+        Assert.assertEquals(sparkReader.getByNotContains("disney").size()
+                , 881);
     }
 
     /**
@@ -68,7 +73,9 @@ public class SparkJsonFileReaderTests {
      */
     @Test
     public void containsPlusNotContains() {
-        Assert.assertEquals(sparkReader.getByContains("disney").size() + sparkReader.getByNotContains("disney").size(), sparkReader.getAll().size());
+        Assert.assertEquals(sparkReader.getByContains("disney").size()
+                        + sparkReader.getByNotContains("disney").size()
+                , sparkReader.getAll().size());
     }
 
     /**
