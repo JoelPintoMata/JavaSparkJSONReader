@@ -5,6 +5,7 @@ import com.example.codeChallenge.enums.SocialTypeEnum;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
+import org.apache.spark.sql.functions;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,9 @@ public class SparkJsonFileReader implements SparkReader {
 
     private Dataset<Row> socials;
 
+//    convinience dataset with formatted/exploded external `socials` node
+    private Dataset<Row> socialsSelectDataSetRow;
+
     public SparkJsonFileReader(@Value("${json.path}") String jsonPath,
                                @Value("${spring.application.name}") String applicationName) {
         SparkSession sparkSession = SparkSession.builder()
@@ -38,45 +42,47 @@ public class SparkJsonFileReader implements SparkReader {
                 .option("mode", "PERMISSIVE")
                 .json(workingDir + jsonPath)
                 .cache();
+
+        socialsSelectDataSetRow = socials.select(functions.explode(socials.col("socials")).as("socials"));
 	}
 
     @Override
     public List<String> getAll() {
-        return socials.select(org.apache.spark.sql.functions.explode(socials.col("socials")).as("socials")).toJSON().collectAsList();
+        return socialsSelectDataSetRow.toJSON().collectAsList();
     }
 
     @Override
     public List<String> getByUsername(String username) {
-        return socials.select(org.apache.spark.sql.functions.explode(socials.col("socials")).as("socials")).where("socials.username = '" + username + "'").toJSON().collectAsList();
+        return socialsSelectDataSetRow.where("socials.username = '" + username + "'").toJSON().collectAsList();
     }
 
     @Override
     public List<String> getBySocialType(SocialTypeEnum contentType) {
-        return socials.select(org.apache.spark.sql.functions.explode(socials.col("socials")).as("socials")).where("socials.socialType = '" + contentType.getValue() + "'").toJSON().collectAsList();
+        return socialsSelectDataSetRow.where("socials.socialType = '" + contentType.getValue() + "'").toJSON().collectAsList();
     }
 
     @Override
     public List<String> getByContains(String word) {
-        return socials.select(org.apache.spark.sql.functions.explode(socials.col("socials")).as("socials")).where("socials.content like '%" + word + "%'").toJSON().collectAsList();
+        return socialsSelectDataSetRow.where("socials.content like '%" + word + "%'").toJSON().collectAsList();
     }
 
     @Override
     public List<String> getByNotContains(String word) {
-        return socials.select(org.apache.spark.sql.functions.explode(socials.col("socials")).as("socials")).where("socials.content is null or socials.content not like '%" + word + "%'").toJSON().collectAsList();
+        return socialsSelectDataSetRow.where("socials.content is null or socials.content not like '%" + word + "%'").toJSON().collectAsList();
     }
 
     @Override
     public List<String> getBeforeDate(LocalDate localDate) {
-        return socials.select(org.apache.spark.sql.functions.explode(socials.col("socials")).as("socials")).where("socials.timestamp is not null and to_date(socials.timestamp) < '" + localDate + "'").toJSON().collectAsList();
+        return socialsSelectDataSetRow.where("socials.timestamp is not null and to_date(socials.timestamp) < '" + localDate + "'").toJSON().collectAsList();
     }
 
     @Override
     public List<String> getEqualsDate(LocalDate localDate) {
-        return socials.select(org.apache.spark.sql.functions.explode(socials.col("socials")).as("socials")).where("socials.timestamp is not null and to_date(socials.timestamp) = '" + localDate + "'").toJSON().collectAsList();
+        return socialsSelectDataSetRow.where("socials.timestamp is not null and to_date(socials.timestamp) = '" + localDate + "'").toJSON().collectAsList();
     }
 
     @Override
     public List<String> getAfterDate(LocalDate localDate) {
-        return socials.select(org.apache.spark.sql.functions.explode(socials.col("socials")).as("socials")).where("socials.timestamp is not null and to_date(socials.timestamp) > '" + localDate + "'").toJSON().collectAsList();
+        return socialsSelectDataSetRow.where("socials.timestamp is not null and to_date(socials.timestamp) > '" + localDate + "'").toJSON().collectAsList();
     }
 }
