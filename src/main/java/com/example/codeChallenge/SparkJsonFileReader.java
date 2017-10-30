@@ -4,8 +4,6 @@ import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.context.annotation.PropertySources;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -16,11 +14,12 @@ public class SparkJsonFileReader implements SparkReader {
 
     private Dataset<Row> socials;
 
-    public SparkJsonFileReader(@Value("${json.path}") String jsonPath) {
+    public SparkJsonFileReader(@Value("${json.path}") String jsonPath,
+                               @Value("${spring.application.name}") String applicationName) {
 
 //		TODO make use of resources claspath
         String workingDir = System.getProperty("user.dir");
-        SparkSession sparkSession = SparkSession.builder().master("local").appName("codeChallenge").getOrCreate();
+        SparkSession sparkSession = SparkSession.builder().master("local").appName(applicationName).getOrCreate();
         socials = sparkSession
                 .read()
                 .option("multiLine", true)
