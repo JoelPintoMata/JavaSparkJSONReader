@@ -16,18 +16,18 @@ public class SparkJsonFileReader implements SparkReader {
 
     public SparkJsonFileReader(@Value("${json.path}") String jsonPath,
                                @Value("${spring.application.name}") String applicationName) {
+        SparkSession sparkSession = SparkSession.builder()
+                .master("local")
+                .appName(applicationName)
+                .getOrCreate();
 
 //		TODO make use of resources claspath
         String workingDir = System.getProperty("user.dir");
-        SparkSession sparkSession = SparkSession.builder().master("local").appName(applicationName).getOrCreate();
         socials = sparkSession
                 .read()
                 .option("multiLine", true)
                 .option("mode", "PERMISSIVE")
                 .json(workingDir + jsonPath).cache();
-
-        socials.printSchema();
-        socials.show();
 	}
 
     @Override
@@ -69,8 +69,4 @@ public class SparkJsonFileReader implements SparkReader {
     public List<String> getAfterDate(LocalDate localDate) {
         return socials.select(org.apache.spark.sql.functions.explode(socials.col("socials")).as("socials")).where("socials.timestamp is not null and to_date(socials.timestamp) > '" + localDate + "'").toJSON().collectAsList();
     }
-
-//    public void setJsonPath(String jsonPath) {
-//        this.jsonPath = jsonPath;
-//    }
 }

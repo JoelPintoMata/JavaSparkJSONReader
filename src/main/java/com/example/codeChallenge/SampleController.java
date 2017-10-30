@@ -2,6 +2,7 @@ package com.example.codeChallenge;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +20,7 @@ import static com.example.codeChallenge.SocialTypeEnum.VIDEO;
 public class SampleController {
 
     @Autowired
+    @Qualifier("sparkFileReader")
 	public SparkReader sparkReader;
 
     @RequestMapping("/")

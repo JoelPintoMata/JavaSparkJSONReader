@@ -3,18 +3,22 @@ package com.example.codeChallenge;
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
 
+@Service
 public class SparkFileReader implements SparkReader {
 
     public JavaRDD<String> rdd;
 
-	public SparkFileReader() {
+	public SparkFileReader(@Value("${json.path}") String jsonPath,
+                           @Value("${spring.application.name}") String applicationName) {
         SparkConf conf = new SparkConf()
                 .setMaster("local[1]")
-                .setAppName("codeChallenge");
+                .setAppName(applicationName);
 		JavaSparkContext sc = new JavaSparkContext(conf);
 
 //		TODO make use of resources claspath
@@ -28,7 +32,7 @@ public class SparkFileReader implements SparkReader {
     }
 
     @Override
-    public List<String> getByUsername(String efteling) {
+    public List<String> getByUsername(String username) {
         return null;
     }
 
