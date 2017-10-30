@@ -16,6 +16,9 @@ import java.util.List;
 import static com.example.codeChallenge.enums.SocialTypeEnum.FACEBOOK;
 import static com.example.codeChallenge.enums.SocialTypeEnum.VIDEO;
 
+/**
+ * Main application controller
+ */
 @Controller
 @EnableAutoConfiguration
 public class MainController {

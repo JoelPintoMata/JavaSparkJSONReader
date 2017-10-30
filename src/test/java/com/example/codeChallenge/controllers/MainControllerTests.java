@@ -1,6 +1,6 @@
 package com.example.codeChallenge.controllers;
 
-import com.example.codeChallenge.CodeChallengeApplication;
+import com.example.codeChallenge.Main;
 import com.example.codeChallenge.readers.SparkJsonFileReader;
 import org.apache.http.entity.ContentType;
 import org.junit.Assert;
@@ -22,7 +22,7 @@ import java.util.List;
 import static org.mockito.BDDMockito.given;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = CodeChallengeApplication.class,
+@SpringBootTest(classes = Main.class,
         webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @TestPropertySource(locations = "classpath:/application-test.properties")
 public class MainControllerTests {

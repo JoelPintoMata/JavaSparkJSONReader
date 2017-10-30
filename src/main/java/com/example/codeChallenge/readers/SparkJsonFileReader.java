@@ -12,6 +12,12 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.List;
 
+/**
+ * A Spark reader based on JSON files
+ *
+ * Note: @Lazy avoids errors related with more than one spark context in the same application.
+ * These can happen when implementing more than one SparkReader
+ */
 @Service @Lazy
 public class SparkJsonFileReader implements SparkReader {
 

@@ -25,6 +25,5 @@ mvn test
 ```
 
 #### Coverage
-
 Current test class coverage of 100%
 Current test method coverage of 81%

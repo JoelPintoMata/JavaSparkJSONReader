@@ -1,5 +1,8 @@
 package com.example.codeChallenge.enums;
 
+/**
+ * A enumerator of the available social types
+ */
 public enum SocialTypeEnum {
 
     VIDEO("INSTAGRAM_VIDEO"),
