@@ -29,7 +29,7 @@ mvn test
 
 ### Endpoints
 
-| Description                                     | URI                     |
+| Definition                                      | URI                     |
 | ----------------------------------------------- | -----------------------:|
 | 0. only user "efteling"                         | http://localhost:8080/0 |
 | 1. only socials containing: "disney"            | http://localhost:8080/1 |
