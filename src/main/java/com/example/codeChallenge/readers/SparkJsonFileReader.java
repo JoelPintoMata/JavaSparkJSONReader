@@ -13,7 +13,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 /**
- * A Spark reader based on JSON files
+ * A Spark reader implementation based on JSON files and SQL querying
  *
  * Note: @Lazy avoids errors related with more than one spark context in the same application.
  * These can happen when implementing more than one SparkReader
@@ -36,7 +36,8 @@ public class SparkJsonFileReader implements SparkReader {
                 .read()
                 .option("multiLine", true)
                 .option("mode", "PERMISSIVE")
-                .json(workingDir + jsonPath).cache();
+                .json(workingDir + jsonPath)
+                .cache();
 	}
 
     @Override
