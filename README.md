@@ -1,6 +1,4 @@
-[![Maintainability](https://api.codeclimate.com/v1/badges/9d26cb4f5ad75618da98/maintainability)](https://codeclimate.com/github/JoelPintoMata/JavaSparkJSONReader/maintainability)
-
-[![Test Coverage](https://api.codeclimate.com/v1/badges/9d26cb4f5ad75618da98/test_coverage)](https://codeclimate.com/github/JoelPintoMata/JavaSparkJSONReader/test_coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/9d26cb4f5ad75618da98/maintainability)](https://codeclimate.com/github/JoelPintoMata/JavaSparkJSONReader/maintainability)  [![Test Coverage](https://api.codeclimate.com/v1/badges/9d26cb4f5ad75618da98/test_coverage)](https://codeclimate.com/github/JoelPintoMata/JavaSparkJSONReader/test_coverage)
 
 # Java Spark JSON reader
 
