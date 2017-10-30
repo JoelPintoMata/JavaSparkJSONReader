@@ -1,3 +1,4 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/8d42efb4c3ad428795222f8adaca7c47)](https://www.codacy.com/app/joelmatacv/JavaSparkJSONReader?utm_source=github.com&utm_medium=referral&utm_content=JoelPintoMata/JavaSparkJSONReader&utm_campaign=badger)
 [![Maintainability](https://api.codeclimate.com/v1/badges/9d26cb4f5ad75618da98/maintainability)](https://codeclimate.com/github/JoelPintoMata/JavaSparkJSONReader/maintainability)  [![Test Coverage](https://api.codeclimate.com/v1/badges/9d26cb4f5ad75618da98/test_coverage)](https://codeclimate.com/github/JoelPintoMata/JavaSparkJSONReader/test_coverage)    [![codebeat badge](https://codebeat.co/badges/beb261c0-817a-49b3-a9ce-b13e9c5d7c06)](https://codebeat.co/projects/github-com-joelpintomata-javasparkjsonreader-master)
 # Java Spark JSON reader
 
