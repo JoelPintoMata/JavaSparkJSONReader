@@ -21,19 +21,29 @@ public class SparkJsonFileReaderTests {
     @Qualifier("sparkJsonFileReader")
     SparkReader sparkReader;
 
+    /**
+     * Tests that all records are read correctly from the source
+     */
     @Test
-    public void contextLoads() {
+    public void getAll() {
         Assert.assertEquals(sparkReader.getAll().size(), 898);
     }
 
+    /**
+     * Tests the total number of socials containing the word "disney"
+     */
     @Test
-    public void actor1() {
-        Assert.assertEquals(sparkReader.getAll().size(), 898);
+    public void containsDisney() {
+        Assert.assertEquals(sparkReader.getByContains("disney").size(), 17);
     }
 
+
+    /**
+     * Tests the total number of socials not containing the word "disney"
+     */
     @Test
-    public void actor2() {
-        Assert.assertEquals(sparkReader.getAll().size(), 898);
+    public void notContainsDisney() {
+        Assert.assertEquals(sparkReader.getByNotContains("disney").size(), 881);
     }
 
     /**
@@ -45,13 +55,40 @@ public class SparkJsonFileReaderTests {
     }
 
     /**
+     * Tests the total number of socials created before a given date
+     */
+    @Test
+    public void beforeDate() {
+        Assert.assertEquals(sparkReader.getBeforeDate(LocalDate.of(2017, Month.FEBRUARY, 1)).size()
+                , 227);
+    }
+
+    /**
+     * Tests the total number of socials created in a given date
+     */
+    @Test
+    public void equalsDate() {
+        Assert.assertEquals(sparkReader.getEqualsDate(LocalDate.of(2017, Month.FEBRUARY, 1)).size()
+                , 12);
+    }
+
+    /**
+     * Tests the total number of socials created after a given date
+     */
+    @Test
+    public void afterDate() {
+        Assert.assertEquals(sparkReader.getAfterDate(LocalDate.of(2017, Month.FEBRUARY, 1)).size()
+                , 659);
+    }
+
+    /**
      * The total sum of a records before, equal and after a date should be equal to the total of records in the rdd
      */
     @Test
     public void beforeEqualAfterDate() {
         Assert.assertEquals(sparkReader.getBeforeDate(LocalDate.of(2017, Month.FEBRUARY, 1)).size()
-                + sparkReader.getEqualsDate(LocalDate.of(2017, Month.FEBRUARY, 1)).size()
-                + sparkReader.getAfterDate(LocalDate.of(2017, Month.FEBRUARY, 1)).size()
-        , sparkReader.getAll().size());
+                        + sparkReader.getEqualsDate(LocalDate.of(2017, Month.FEBRUARY, 1)).size()
+                        + sparkReader.getAfterDate(LocalDate.of(2017, Month.FEBRUARY, 1)).size()
+                , sparkReader.getAll().size());
     }
 }
